@@ -30,9 +30,16 @@ function writeToFile(data){
 function init() {
 
     inquirer.prompt(questions).then((answer) => {
-        
-        writeToFile(shapes({ ...answer}));
-    });
+        if(data.logoshape == circle){
+            return shapes.Circle;
+        } else if (data.logoshape == triangle){
+            return shapes.Triangle;
+        } else{
+            return shapes.Square;
+        }
+        writeToFile(SVG({ ...answer}))
+    
+    })
 };
 
 // Function call to initialize app
