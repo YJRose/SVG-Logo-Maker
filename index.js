@@ -1,6 +1,7 @@
 //include packages needed for this application
 const inquirer = require('inquirer');
 const shapes = require('./lib/shapes');
+const svg = require('./lib/svg');
 const fs = require('fs');
 
 //user input with text color, shap(list) and shape's color
@@ -27,17 +28,22 @@ function writeToFile(data){
     return fs.writeFileSync("logo.svg", data);
 };
 
+function setlogoshape(logoshape){
+    this.logoshape = logoshape;
+    if (logoshape === "circle") {
+        return shapes.Circle;
+      } else if (logoshape === "triangle") {
+        return shapes.Triangle;
+      } else {
+        return shapes.Square;
+      }
+};
+
 function init() {
 
-    inquirer.prompt(questions).then((answer) => {
-        if(data.logoshape == circle){
-            return shapes.Circle;
-        } else if (data.logoshape == triangle){
-            return shapes.Triangle;
-        } else{
-            return shapes.Square;
-        }
-        writeToFile(SVG({ ...answer}))
+    inquirer.prompt(questions).then((logoshape, textcolor) => {
+        setlogoshape(logoshape);
+        writeToFile(svg({logoshape, textcolor}));
     
     })
 };
