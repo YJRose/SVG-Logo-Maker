@@ -1,7 +1,7 @@
 //include packages needed for this application
 const inquirer = require('inquirer');
 const shapes = require('./lib/shapes');
-const svg = require('./lib/svg');
+const SVG = require('./lib/SVG');
 const fs = require('fs');
 
 //user input with text color, shap(list) and shape's color
@@ -41,11 +41,14 @@ function setlogoshape(logoshape){
 
 function init() {
 
-    inquirer.prompt(questions).then((logoshape, textcolor) => {
-        setlogoshape(logoshape);
-        writeToFile(svg({logoshape, textcolor}));
-    
+    inquirer.prompt(questions).then((logoshape, shapecolor) => {
+        setlogoshape(logoshape,shapecolor);
     })
+    .then((logoshape, textcolor) => {
+
+        writeToFile(SVG({logoshape, textcolor}));
+    })       
+    
 };
 
 // Function call to initialize app
