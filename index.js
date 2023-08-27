@@ -28,27 +28,24 @@ function writeToFile(data){
     return fs.writeFileSync("logo.svg", data);
 };
 
-function setlogoshape(logoshape){
-    this.logoshape = logoshape;
-    if (logoshape === "circle") {
-        return shapes.Circle;
-      } else if (logoshape === "triangle") {
-        return shapes.Triangle;
+function setlogoshape(data){
+    let logo = " ";
+    if (data.logoshape === "circle") {
+        return shapes.Circle = logo;
+      } else if (data.logoshape === "triangle") {
+        return shapes.Triangle = logo;
       } else {
-        return shapes.Square;
+        return shapes.Square = logo;
       }
+
 };
 
 function init() {
 
-    inquirer.prompt(questions).then((logoshape, shapecolor) => {
-        setlogoshape(logoshape,shapecolor);
+    inquirer.prompt(questions).then((data) => {
+        console.log(data.textcolor);
+        writeToFile(SVG(data.textcolor));
     })
-    .then((logoshape, textcolor) => {
-
-        writeToFile(SVG({logoshape, textcolor}));
-    })       
-    
 };
 
 // Function call to initialize app
