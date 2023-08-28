@@ -29,13 +29,14 @@ function writeToFile(data){
 };
 
 function setlogoshape(data){
-    let logo = " ";
+    console.log(data);
+
     if (data.logoshape === "circle") {
-        return shapes.Circle = logo;
+        return new shapes.Circle(data.shapecolor);
       } else if (data.logoshape === "triangle") {
-        return shapes.Triangle = logo;
+        return new shapes.Triangle(data.shapecolor);
       } else {
-        return shapes.Square = logo;
+        return new shapes.Square(data.shapecolor);
       }
 
 };
@@ -43,10 +44,21 @@ function setlogoshape(data){
 function init() {
 
     inquirer.prompt(questions).then((data) => {
-        console.log(data.textcolor);
-        writeToFile(SVG(data.textcolor));
-    })
-};
+        console.log(data);
+
+        const shape = setlogoshape(data);
+
+        console.log(shape);
+
+        console.log(shape.render());
+
+        const finalshape = shape.render();
+        
+        const logo = new SVG(finalshape, data.textcolor);
+
+        writeToFile(logo.render());
+    });
+}
 
 // Function call to initialize app
 init();
