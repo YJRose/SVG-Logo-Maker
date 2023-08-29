@@ -29,7 +29,8 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ## Mock-up
 ![SVG Logo](./lib/SVG.PNG)
 ``````
-Vedio walkthrough : (https://drive.google.com/file/d/1erzIRXGUhNHlbBiVmw3DM8eOn2upS3zV/view)
+### Vedio walkthrough
+(https://drive.google.com/file/d/1erzIRXGUhNHlbBiVmw3DM8eOn2upS3zV/view)
 
 ---
 
