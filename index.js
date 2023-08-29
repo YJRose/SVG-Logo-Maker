@@ -45,13 +45,13 @@ function init() {
 
     inquirer.prompt(questions).then((data) => {
         console.log(data);
-
+        //call setlogoshape function
         const shape = setlogoshape(data);
 
         console.log(shape);
 
         console.log(shape.render());
-
+        //call shape.render function
         const finalshape = shape.render();
         
         const logo = new SVG(finalshape, data.textcolor);
@@ -59,6 +59,8 @@ function init() {
         writeToFile(logo.render());
     });
 }
+
+
 
 // Function call to initialize app
 init();
